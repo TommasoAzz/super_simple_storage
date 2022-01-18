@@ -1,0 +1,17 @@
+name: super_simple_storage
+description: A very simple storage system for Flutter and Dart.
+version: 1.0.0
+homepage: https://github.com/TommasoAzz/super_simple_storage
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  path_provider: ^2.0.8
+
+dev_dependencies:
+  test: ^1.20.1
+  json_serializable: ^6.1.4
+  build_runner: ^2.1.7
