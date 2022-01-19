@@ -21,13 +21,13 @@ abstract class JsonNamedFileRepository<T> with FileIO implements NamedDataReposi
 
   @override
   Future<void> saveContent(final String name, final T content) async {
-    await _setFileFolder();
+    await setFileFolder();
     await saveToFile(_fileFolder!, '$name.json', json.encode(toJson(content)));
   }
 
   @override
   Future<T?> content(final String name) async {
-    await _setFileFolder();
+    await setFileFolder();
     final String jsonString = await readFromFile(_fileFolder!, '$name.json');
 
     if (jsonString.isNotEmpty) {
@@ -39,10 +39,10 @@ abstract class JsonNamedFileRepository<T> with FileIO implements NamedDataReposi
 
   @override
   Future<void> deleteContent(final String name) async {
-    await _setFileFolder();
+    await setFileFolder();
     await deleteFile(_fileFolder!, '$name.json');
   }
 
   @protected
-  Future<void> _setFileFolder();
+  Future<void> setFileFolder();
 }

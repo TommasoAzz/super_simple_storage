@@ -19,14 +19,14 @@ abstract class BinaryNamedFileRepository
   /// [name] must specify the extension.
   @override
   Future<void> saveContent(final String name, final Uint8List content) async {
-    await _setFileFolder();
+    await setFileFolder();
     await saveToFile(_fileFolder!, name, content, byteMode: true);
   }
 
   /// [name] must specify the extension.
   @override
   Future<Uint8List?> content(final String name) async {
-    await _setFileFolder();
+    await setFileFolder();
     final bytes = (await readFromFile(_fileFolder!, name, byteMode: true) as Uint8List);
 
     if (bytes.isNotEmpty) {
@@ -39,16 +39,16 @@ abstract class BinaryNamedFileRepository
   /// [name] must specify the extension.
   @override
   Future<void> deleteContent(final String name) async {
-    await _setFileFolder();
+    await setFileFolder();
     await deleteFile(_fileFolder!, name);
   }
 
   @override
   Future<String> filePath(final String name) async {
-    await _setFileFolder();
+    await setFileFolder();
     return "$_fileFolder/$name";
   }
 
   @protected
-  Future<void> _setFileFolder();
+  Future<void> setFileFolder();
 }

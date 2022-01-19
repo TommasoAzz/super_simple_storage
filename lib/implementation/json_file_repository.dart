@@ -26,13 +26,13 @@ abstract class JsonFileRepository<T> with FileIO implements DataRepository<T> {
 
   @override
   Future<void> saveContent(T content) async {
-    await _setFileFolder();
+    await setFileFolder();
     await saveToFile(_fileFolder!, _fileName, json.encode(toJson(content)));
   }
 
   @override
   Future<T?> get content async {
-    await _setFileFolder();
+    await setFileFolder();
     final String jsonString = await readFromFile(_fileFolder!, _fileName);
 
     if (jsonString.isNotEmpty) {
@@ -44,10 +44,10 @@ abstract class JsonFileRepository<T> with FileIO implements DataRepository<T> {
 
   @override
   Future<void> deleteContent() async {
-    await _setFileFolder();
+    await setFileFolder();
     await deleteFile(_fileFolder!, _fileName);
   }
 
   @protected
-  Future<void> _setFileFolder();
+  Future<void> setFileFolder();
 }
