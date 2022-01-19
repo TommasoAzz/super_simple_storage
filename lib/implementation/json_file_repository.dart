@@ -49,5 +49,7 @@ abstract class JsonFileRepository<T> with FileIO implements DataRepository<T> {
   }
 
   @protected
-  Future<void> setFileFolder();
+  Future<void> setFileFolder([final String fileFolder = ""]) async {
+    _fileFolder ??= fileFolder;
+  }
 }

@@ -44,5 +44,7 @@ abstract class JsonNamedFileRepository<T> with FileIO implements NamedDataReposi
   }
 
   @protected
-  Future<void> setFileFolder();
+  Future<void> setFileFolder([final String fileFolder = ""]) async {
+    _fileFolder ??= fileFolder;
+  }
 }

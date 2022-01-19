@@ -50,5 +50,7 @@ abstract class BinaryNamedFileRepository
   }
 
   @protected
-  Future<void> setFileFolder();
+  Future<void> setFileFolder([final String fileFolder = ""]) async {
+    _fileFolder ??= fileFolder;
+  }
 }
